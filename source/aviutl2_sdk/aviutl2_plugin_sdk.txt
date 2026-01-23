@@ -1,0 +1,202 @@
+-----------------------------------------------------------------------
+    AviUtl ExEdit2 Plugin SDK by ＫＥＮくん
+-----------------------------------------------------------------------
+
+
+－ はじめに －
+
+    AviUtl ExEdit2のPluginを作成するためのSDKです。
+    Pluginを追加することで画像フィルタや他のファイル形式の入出力等を
+    AviUtl ExEdit2に追加することが出来ます。
+
+
+- プラグインの種類 -
+
+    ○入力プラグイン (.aui2)
+        他のファイル形式を読み込むプラグインです。
+
+    ○出力プラグイン (.auo2)
+        他のファイル形式に出力するプラグインです。
+
+    ○フィルタプラグイン (.auf2)
+        メディアオブジェクト、フィルタ効果を追加するプラグインです。
+
+    ○スクリプトモジュール (.mod2)
+        各種スクリプトから利用出来る関数群を追加するプラグインです。
+        スクリプトモジュールはスクリプトのフォルダに配置します。
+
+    ○汎用プラグイン (.aux2)
+        独自ウィンドウ、インポート、エクスポートメニューの追加や
+        プロジェクトの編集操作を追加する為のプラグインです。
+
+
+- プラグイン・スクリプトのインストール -
+
+    プラグインやスクリプトは既定のフォルダに配置することで動作します。
+
+    単一ファイルで構成されるプラグイン・スクリプトはプレビュー画面にD&Dすることで
+    既定のフォルダにインストールすることが出来ます。
+
+    パッケージファイル(.au2pkg.zip)をプレビュー画面にD&Dすることで複数ファイル構成の
+    プラグイン・スクリプト等をアプリケーションデータフォルダ配下にインストールすることが出来ます。
+
+    パッケージファイルはzipファイル形式で下記のフォルダ配下のファイルに制限されます。
+    ※アプリケーションデータフォルダからの相対で展開されます。
+        Plugin\
+        Script\
+        Language\
+        Alias\
+        Figure\
+        Transition\
+        Preset\
+        Default\
+
+    プラグイン・スクリプト・言語ファイルを含める場合は下記のような構成になります。
+        SamplePackage.au2pkg.zip 
+        |----Plugin
+        |    |----SamplePackage
+        |         |----SamplePackage.aux2
+        |----Script
+        |    |----SamplePackage
+        |         |----SamplePackage.anm2
+        |----Language
+        |    |----English.SamplePackage.aul2
+
+
+- サンプルプラグイン -
+
+    各種サンプルプラグインのソースを付属していますので
+    作成するときの参考にしてみてください。
+
+    ○AviReader.cpp
+        AVIファイルを読み込むプラグインです。
+
+    ○AviSaver.cpp
+        AVIファイルで出力するプラグインです。
+
+    ○MediaObject.cpp
+        サンプルのメディアオブジェクトのプラグインです。
+
+    ○MediaFilter.cpp
+        サンプルのフィルタ効果のプラグインです。
+
+    ○ScriptModule.cpp
+        サンプルのスクリプトモジュールのプラグインです。
+
+    ○WindowClient.cpp
+        独自ウィンドウを追加するプラグインです。
+
+
+－ 使用上の注意 －
+
+    このプログラムはフリーソフトウェアです。
+    このプログラムの使用によって何らかの障害が発生した場合でも、
+    作者は一切の責任を負わないものとします。
+
+
+－ ライセンス －
+
+    AviUtl ExEdit2 Plugin SDK は MIT License の元で公開されています。
+    ライセンスについては付属の license.txt をご覧ください。
+
+
+－ 更新履歴 －
+
+    [2025/7/20]
+    [auo2] 対応フォーマットにPA64,HF64,YC48を追加
+    [aui2] 対応フォーマットにPA64,HF64,YC48を追加
+    [aui2] 拡張用の予約項目を追加
+
+    [2025/8/16]
+    [aui2] マルチトラック対応用の関数(func_set_track)を追加
+    [aui2] 時間指定読み込み対応用の関数(func_time_to_frame)を追加
+
+    [2025/10/5]
+    [aui2][auo2] DLL初期化終了時の関数定義(InitializePlugin,UninitializePlugin)を追加
+    [auf2] フィルタプラグインのサンプルを追加
+
+    [2025/10/12]
+    [mod2] スクリプトモジュールのサンプルを追加
+
+    [2025/10/26]
+    [mod2] get_param_boolean(),push_result_boolean()を追加
+    [aux2] 独自ウィンドウを追加する汎用プラグインのサンプルを追加
+
+    [2025/11/1]
+    [aux2] プロジェクトファイルの独自データ保存向けの関数を追加
+    [aux2] プロジェクトデータ編集向けの関数を追加
+
+    [2025/11/2]
+    [aux2] get_object_item_value(),set_object_item_value()のエフェクト指定方法を追加
+    [aux2] EDIT_SECTIONにoutput_log()を追加
+    [auf2] OBJECT_INFOにeffect_idを追加
+
+    [2025/11/8]
+    [aui2][auo2][auf2][mod2][aux2] ログ出力機能の関数定義(InitializeLogger)を追加
+    [auf2] FILTER_ITEM_DATAを追加
+    [aux2] HOST_APP_TABLEにregister_layer_menu(),register_object_menu()を追加
+    [aux2] EDIT_SECTIONにget_selected_object(),get_selected_object_num()を追加
+
+    [2025/11/9]
+    [mod2] get_param_table_boolean()を追加
+
+    [2025/11/22]
+    [auf2] FILTER_PROC_VIDEOにget_image_texture2d(),get_framebuffer_texture2d()を追加
+    [aux2] EDIT_SECTIONにcount_object_effect()を追加
+    [aux2] EDIT_HANDLEにcall_edit_section_param()を追加
+    [auf2] メディアオブジェクトのサンプルフィルタを更新
+    [aux2] ウィンドウクライアントのサンプルプラグインを更新
+
+    [2025/11/30]
+    [auf2] FILTER_ITEM_GROUPを追加
+    [aux2] 登録したオブジェクトメニューが表示されないことがあるのを修正
+
+    [2025/12/2]
+    [aux2] EDIT_HANDLEにget_edit_info()を追加
+    [aux2] EDIT_SECTIONにget_mouse_layer_frame(),pos_to_layer_frame()を追加
+    [aux2] EDIT_SECTIONにis_support_media_file(),get_media_info()を追加
+    [aux2] EDIT_SECTIONにcreate_object_from_media_file(),create_object()を追加
+    [aux2] EDIT_SECTIONにget_project_file()を追加
+    [aux2] PROJECT_FILEにget_project_file_path()を追加
+    [auf2] FILTER_ITEM_GROUPにグループの終端の設定方法を追加
+
+    [2025/12/6]
+    [aux2] EDIT_SECTIONにset_cursor_layer_frame()を追加
+    [aux2] HOST_APP_TABLEにregister_config_menu()を追加
+    [aux2] create_object_from_alias()で複数オブジェクトのエイリアスデータを利用出来るようにした
+ 
+    [2025/12/7]
+    [aux2] EDIT_INFOにレイヤー編集関連の情報を追加
+    [aux2] EDIT_SECTIONにset_display_layer_frame(),set_select_range(),set_grid_bpm()を追加
+    [aux2] EDIT_SECTIONにget_object_name(),set_object_name()を追加
+
+    [2025/12/14]
+    [aux2] set_cursor_layer_frame()が正しく反映されないことがあるのを修正
+    [auf2] FILTER_PLUGIN_TABLEにフィルタオブジェクトのサポートフラグを追加
+
+    [2025/12/20]
+    [aux2] get_object_item_value(),set_object_item_value()が正しく取得反映されないことがあるのを修正
+    [aux2] HOST_APP_TABLEにregister_edit_menu(),register_clear_cache_handler()を追加
+
+    [2025/12/27]
+    [aux2] アプリ起動時のプロジェクト初期化時にregister_project_load_handler()が呼ばれないことがあるのを修正
+    [aux2] register_input_plugin()で登録した対応ファイルの拡張子の関連付けが反映されないのを修正
+    [aux2] HOST_APP_TABLEにregister_change_scene_handlerを追加
+    [aux2] EDIT_INFOにscene_idを追加
+    [auf2] FILTER_ITEM_BUTTONを追加
+    [auf2] OBJECT_INFOにフィルタオブジェクトかのフラグを追加
+
+    [2026/1/11]
+    [aux2] EDIT_HANDLEにrestart_host_app(),enum_effect_name()を追加
+    [auf2] FILTER_ITEM_STRING,FILTER_ITEM_TEXTを追加
+    [auf2] サンプルのフィルタプラグインに対応する言語ファイルを追加
+
+    [2026/1/12]
+    [auf2] FILTER_ITEM_FOLDERを追加
+
+    [2026/1/25]
+    [aui2][auo2][auf2][mod2][aux2] 設定関連機能の関数定義(InitializeConfig)を追加
+    [aux2] EDIT_HANDLEにenum_module_info()を追加
+    ログ出力機能の文字制限をLOG_HANDLEのコメントに追記
+    プラグインの配置場所をPluginフォルダの一つ下のフォルダも対象とするようにした
+    プラグイン・スクリプト等を纏めてインストールするパッケージファイルの説明を追加

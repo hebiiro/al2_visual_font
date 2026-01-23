@@ -1,0 +1,5 @@
+﻿EXPORTS
+	InitializePlugin
+	UninitializePlugin
+	RegisterPlugin
+	InitializeConfig

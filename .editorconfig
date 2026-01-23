@@ -1,0 +1,10 @@
+﻿root = true
+
+[*]
+charset = utf-8-bom
+
+[*.rc]
+charset = utf-16le
+
+[*.*.{json,tsv}]
+charset = utf-8

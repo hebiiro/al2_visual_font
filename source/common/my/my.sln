@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		common.props = common.props
+		CREDITS.md = CREDITS.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{B175B2AB-8F9D-46AB-B0CD-71AF2FA28170}"
+	ProjectSection(SolutionItems) = preProject
+		detours.hpp = detours.hpp
+		dialog.hpp = dialog.hpp
+		dialog2.hpp = dialog2.hpp
+		file_update_checker.hpp = file_update_checker.hpp
+		format.hpp = format.hpp
+		gdi.hpp = gdi.hpp
+		gdiplus.hpp = gdiplus.hpp
+		json.hpp = json.hpp
+		label.hpp = label.hpp
+		layout.hpp = layout.hpp
+		mfc.hpp = mfc.hpp
+		shortcut_key.hpp = shortcut_key.hpp
+		slimbar.hpp = slimbar.hpp
+		str_utils.hpp = str_utils.hpp
+		tools.hpp = tools.hpp
+		trace.hpp = trace.hpp
+		trace_to_file.hpp = trace_to_file.hpp
+		uah_menu.hpp = uah_menu.hpp
+		utils.hpp = utils.hpp
+		window.hpp = window.hpp
+		window2.hpp = window2.hpp
+		window_interceptor.hpp = window_interceptor.hpp
+		win_utils.hpp = win_utils.hpp
+		win_wrap.hpp = win_wrap.hpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aviutl", "aviutl", "{C8324D4D-CDE3-49A1-8569-123CA8665C48}"
+	ProjectSection(SolutionItems) = preProject
+		aviutl\aviutl_internal.hpp = aviutl\aviutl_internal.hpp
+		aviutl\exedit_internal.hpp = aviutl\exedit_internal.hpp
+		aviutl\plugin_window.hpp = aviutl\plugin_window.hpp
+		aviutl\plugin_window_extension.hpp = aviutl\plugin_window_extension.hpp
+		aviutl\slider_panel.hpp = aviutl\slider_panel.hpp
+		aviutl\window_holder_extension.hpp = aviutl\window_holder_extension.hpp
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C8324D4D-CDE3-49A1-8569-123CA8665C48} = {B175B2AB-8F9D-46AB-B0CD-71AF2FA28170}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79076051-A224-4A18-885D-D418FC39E40F}
+	EndGlobalSection
+EndGlobal
