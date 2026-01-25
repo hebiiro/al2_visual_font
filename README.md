@@ -17,9 +17,9 @@
 ## 🚀インストール
 
 * `プラグインフォルダ`に以下のファイルを入れてください。
-	* `al2` (フォルダ)
-		* `al2_visual_font.aux2`
-	* (上記ファイルは`al2_visual_font.au2pkg.zip`ファイル内の`Plugin`フォルダに入っています)
+	* `al2` ✏️フォルダ
+		* `al2_visual_font.aux2` ✏️汎用プラグインファイル
+* (上記ファイルは`al2_visual_font.au2pkg.zip`ファイル内の`Plugin`フォルダに入っています)
 ---
 * または、`al2_visual_font.au2pkg.zip`ファイルをaviutl2のプレビュー画面にD&Dしてください。
 * このとき「`al2`フォルダが使用中です」のようなダイアログが表示された場合は「スキップ」を選択してください。
@@ -28,8 +28,10 @@
 ## 🔥アンインストール
 
 * `プラグインフォルダ`から以下のファイルを削除してください。
-	* `al2/al2_visual_font.aux2`
-	* `al2/config/al2_visual_font.json`
+	* `al2` ✏️フォルダ
+		* `al2_visual_font.aux2` ✏️このファイルを削除
+		* `config` ✏️フォルダ
+			* `al2_visual_font.json` ✏️このファイルを削除
 
 ## 💡使い方
 
@@ -55,8 +57,10 @@
 
 ### 🏷️設定を初期化する
 
-1. aviutl2を起動していない状態で以下のファイルを削除してください。
-	* `al2/config/al2_visual_font.json`
+1. aviutl2を起動していない状態で`プラグインフォルダ`内の以下のファイルを削除してください。
+	* `al2` ✏️フォルダ
+		* `config` ✏️フォルダ
+			* `al2_visual_font.json` ✏️このファイルを削除
 
 ## 🔧設定
 
