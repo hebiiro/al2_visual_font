@@ -10,6 +10,7 @@ namespace apn::visual_font
 		// プラグイン名とプラグイン情報です。
 		//
 		const std::wstring name = L"フォント視覚化MOD";
-		const std::wstring information = L"🐍" + name + L"🔖r1"; // アイコンとリリース番号を付与します。
+		const std::wstring information = L"🐍" + name + L"🔖";
+		const std::wstring revision = L"r1";
 	} version;
 }

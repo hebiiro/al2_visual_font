@@ -52,7 +52,6 @@ namespace apn::visual_font
 	EXTERN_C bool InitializePlugin(DWORD version)
 	{
 		if (version < 2003000) return false;
-
 #ifdef _DEBUG
 		// デバッグ用のコードです。
 		{
@@ -90,10 +89,11 @@ namespace apn::visual_font
 	EXTERN_C void RegisterPlugin(HOST_APP_TABLE* host)
 	{
 		// プラグイン情報をセットします。
-		host->set_plugin_information(version.information.c_str());
+		host->set_plugin_information(my::format(L"{/}{/}",
+			tr(version.information), version.revision).c_str());
 
 		// プラグインウィンドウを登録します。
-		host->register_window_client(version.name.c_str(), hive.plugin_window);
+		host->register_window_client(tr(version.name), hive.plugin_window);
 
 		// aviutl2ウィンドウを取得します。
 		{

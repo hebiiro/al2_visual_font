@@ -11,6 +11,14 @@ namespace apn::visual_font
 	}
 
 	//
+	// 指定された文字列を翻訳して返します。
+	//
+	inline LPCWSTR tr(const std::wstring& section, const std::wstring& text)
+	{
+		return hive.aviutl2.config->get_language_text(hive.aviutl2.config, section.c_str(), text.c_str());
+	}
+
+	//
 	// 指定された文字列をクリップボードにコピーします。
 	//
 	inline BOOL set_clipboard_text(const std::wstring& text, HWND hwnd = nullptr)

@@ -34,8 +34,7 @@ namespace apn::visual_font::instant_window
 			auto window_name = my::get_window_text(hwnd);
 
 			// タイトル名を翻訳します。
-			auto title = hive.aviutl2.config->get_language_text(
-				hive.aviutl2.config, L"Dialog", hive.font_menu_dialog.title.c_str());
+			auto title = tr(L"Dialog", hive.font_menu_dialog.title);
 
 			// 『フォントメニューの設定』ダイアログではない場合はサブクラス化しません。
 			if (window_name != title) return FALSE;
