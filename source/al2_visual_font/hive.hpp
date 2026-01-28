@@ -8,7 +8,7 @@ namespace apn::visual_font
 	inline struct hive_t
 	{
 		//
-		// このアドインのインスタンスハンドルです。
+		// このdllのインスタンスハンドルです。
 		//
 		HINSTANCE instance = nullptr;
 

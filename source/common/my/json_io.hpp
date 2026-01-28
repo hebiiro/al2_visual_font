@@ -1,11 +1,12 @@
 ﻿#pragma once
 
-namespace apn::visual_font
+namespace my
 {
 	//
-	// このクラスは設定ファイル入出力のベースクラスです。
+	// このクラスはjsonファイル入出力のベースクラスです。
 	//
-	struct io_base_t
+	template <auto& error_handler>
+	struct json_io_t
 	{
 		//
 		// 入出力する設定ファイルのパスです。
@@ -31,25 +32,22 @@ namespace apn::visual_font
 
 			try
 			{
-				// スコープ終了時にupdate()が呼ばれるようにします。
-				struct Updater {
-					io_base_t* io_base;
-					Updater(io_base_t* io_base) : io_base(io_base) {}
-					~Updater() { io_base->update(); }
-				} updater(this);
+				// スコープ終了時にupdate()を実行します。
+				my::scope_exit scope_exit([&](){ update(); });
 
 				// 設定ファイルが存在しない場合は何もしません。
 				if (!std::filesystem::exists(path)) return FALSE;
 
 				// ストリームを開きます。
 				std::ifstream ifs(path);
+				if (!ifs) return FALSE;
 
 				// ストリームから読み込みます。
 				return read_stream(ifs);
 			}
 			catch (const std::exception& error)
 			{
-				hive.message_box(my::format(
+				error_handler.message_box(my::format(
 					L"{/}を読み込み中にエラーが発生しました\n{/}",
 					path, my::ws(error.what())));
 
@@ -76,13 +74,14 @@ namespace apn::visual_font
 
 				// ストリームを開きます。
 				std::ofstream ofs(path);
+				if (!ofs) return FALSE;
 
 				// ストリームに書き込みます。
 				return write_stream(ofs);
 			}
 			catch (const std::exception& error)
 			{
-				hive.message_box(my::format(
+				error_handler.message_box(my::format(
 					L"{/}を書き込み中にエラーが発生しました\n{/}",
 					path, my::ws(error.what())));
 

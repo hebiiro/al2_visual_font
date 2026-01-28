@@ -5,7 +5,7 @@ namespace apn::visual_font
 	//
 	// このクラスはコンフィグの入出力を担当します。
 	//
-	inline struct config_io_t : io_base_t
+	inline struct config_io_t : my::json_io_t<hive>
 	{
 		//
 		// 初期化処理を実行します。

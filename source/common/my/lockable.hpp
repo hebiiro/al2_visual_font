@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-namespace apn::visual_font
+namespace my
 {
 	struct lockable_t
 	{

@@ -2,7 +2,6 @@
 #include "resource.h"
 #include "version.hpp"
 #include "app_interface.hpp"
-#include "lockable.hpp"
 #include "hive.hpp"
 #include "utils.hpp"
 #include "available_fonts.hpp"
@@ -15,7 +14,6 @@
 #include "hook/entry/gdi_api.hpp"
 #include "hook/entry/call_wnd_proc_ret.hpp"
 #include "config_dialog.hpp"
-#include "io_base.hpp"
 #include "config_io.hpp"
 #include "app.hpp"
 

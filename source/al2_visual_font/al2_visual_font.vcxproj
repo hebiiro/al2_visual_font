@@ -161,8 +161,6 @@
     <ClInclude Include="instant_window\entity\font_listbox.hpp" />
     <ClInclude Include="instant_window\entity\font_menu_dialog.hpp" />
     <ClInclude Include="instant_window\manager.hpp" />
-    <ClInclude Include="io_base.hpp" />
-    <ClInclude Include="lockable.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="utils.hpp" />

@@ -5,7 +5,7 @@ namespace apn::visual_font
 	//
 	// このクラスはコンフィグダイアログです。
 	//
-	inline struct config_dialog_t : my::Dialog, lockable_t
+	inline struct config_dialog_t : my::Dialog, my::lockable_t
 	{
 		virtual void on_update_controls() {}
 		virtual void on_update_config() {}
@@ -22,7 +22,7 @@ namespace apn::visual_font
 			{
 				// 初期化中にエディットボックスがコマンドを発行してしまうので、
 				// それを防ぐためにロックしておきます。
-				locker_t locker(this);
+				my::locker_t locker(this);
 
 				if (!__super::create(hive.instance, MAKEINTRESOURCE(idd_config), nullptr))
 				{
@@ -54,7 +54,7 @@ namespace apn::visual_font
 
 			if (is_locked()) return FALSE;
 
-			locker_t locker(this);
+			my::locker_t locker(this);
 
 			set_check(idc_font_menu_flag_use, hive.font_menu.flag_use);
 			set_int(idc_font_menu_item_size_cx, hive.font_menu.item_size.cx);
