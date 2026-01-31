@@ -54,4 +54,56 @@ namespace apn::visual_font
 		// (メモリハンドルをセットしたあとは開放できません)
 		return !!::SetClipboardData(CF_UNICODETEXT, handle);
 	}
+
+	//
+	// よく使うファイルパスを管理します。
+	//
+	struct base_path_t
+	{
+		//
+		// 基準となるパスです。
+		//
+		std::filesystem::path path;
+
+		//
+		// 基準となるフォルダのパスです。
+		//
+		std::filesystem::path dir;
+
+		//
+		// 基準となるステムです。
+		//
+		std::filesystem::path stem;
+
+		//
+		// アセットフォルダのパスです。
+		//
+		std::filesystem::path assets_dir;
+
+		//
+		// コンフィグフォルダのパスです。
+		//
+		std::filesystem::path config_dir;
+
+		//
+		// コンストラクタです。
+		//
+		base_path_t()
+		{
+			// 基準となるパスを取得します。
+			path = my::get_module_file_name(hive.instance);
+
+			// 基準となるステムを取得します。
+			stem = path.stem();
+
+			// 基準となるフォルダのパスを取得します。
+			dir = path.parent_path() / stem;
+
+			// アセットフォルダのパスを取得します。
+			assets_dir = dir  / L"assets";
+
+			// コンフィグフォルダのパスを取得します。
+			config_dir = dir  / L"config";
+		}
+	};
 }

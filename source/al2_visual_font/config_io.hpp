@@ -14,15 +14,14 @@ namespace apn::visual_font
 		{
 			MY_TRACE_FUNC("");
 
-			auto module_file_path = my::get_module_file_name(hive.instance);
-			auto config_folder_path = module_file_path.parent_path() / L"config";
+			// 基準となるパスを取得します。
+			base_path_t base;
 
-			path = hive.config_file_name = config_folder_path /
-				module_file_path.filename().replace_extension(L".json");
+			path = hive.config_file_name = base.config_dir / L".json";
 			MY_TRACE_STR(hive.config_file_name);
 
 			// コンフィグフォルダを作成しておきます。
-			try { std::filesystem::create_directories(config_folder_path); } catch (...) {}
+			try { std::filesystem::create_directories(base.config_dir); } catch (...) {}
 
 			return TRUE;
 		}
