@@ -1,6 +1,6 @@
 ﻿//{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ で生成されたインクルード ファイル。
-// al2_visual_font.rc で使用
+// resource.rc で使用
 //
 #define idd_config                      100
 #define idc_font_menu_stc               10000

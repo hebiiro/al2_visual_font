@@ -72,7 +72,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="al2_visual_font.rc">
+    <ResourceCompile Include="resource.rc">
       <Filter>resource</Filter>
     </ResourceCompile>
   </ItemGroup>
