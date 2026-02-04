@@ -1,4 +1,0 @@
-﻿root = true
-
-[*.{h,cpp}]
-charset = shift_jis

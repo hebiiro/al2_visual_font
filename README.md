@@ -1,39 +1,23 @@
-﻿# 🎉AviUtl2フォント視覚化MOD
+﻿# 🐍AviUtl2 フォント視覚化MOD
 
 * aviutl2のフォントを視覚的に選択できるようにするMODです。
-* aviutl2の汎用プラグインの形式になっていますが、実際には見た目を変えるタイプのMODです。
+* aviutl2の入力プラグインの形式になっていますが、実際には見た目を変えるタイプのMODです。
 
-!["AviUtl2フォント視覚化MODウィンドウ"](images/r1.png)
-!["フォントメニューの設定ダイアログ"](images/r1_font_menu_settings.png)
-
-## 🚧注意事項
-
-* `データフォルダ`とは`C:\ProgramData\aviutl2`または`aviutl2.exeがあるフォルダ\data`のことです。
-* `プラグインフォルダ`とは`データフォルダ\Plugin`のことです。
-
-> [!IMPORTANT]
-> * aviutl2 beta30以降でのみ動作します。
-> * `ダークモード化MOD`と干渉してしまうので、以下の操作をしてください。
->	* `ダークモード化MOD`の`フォントプレビューの設定`にあるチェックボックスをすべて外してください。
+![コンフィグダイアログ](images/r1.png)
+![フォントメニューの設定ダイアログ](images/r1_font_menu_settings.png)
 
 ## 🚀インストール
 
 * `プラグインフォルダ`に以下のファイルを入れてください。
 	* `al2` ✏️フォルダ
-		* `al2_visual_font.aux2` ✏️汎用プラグインファイル
-* (上記ファイルは`al2_visual_font.au2pkg.zip`ファイル内の`Plugin`フォルダに入っています)
----
-* または、`al2_visual_font.au2pkg.zip`ファイルをaviutl2のプレビュー画面にD&Dしてください。
-* このとき「`al2`フォルダが使用中です」のようなダイアログが表示された場合は「スキップ」を選択してください。
-!["アップデート時のダイアログ"](images/r1_skip.png)
+		* `al2_visual_font.aui2` ✏️入力プラグインファイル
 
 ## 🔥アンインストール
 
 * `プラグインフォルダ`から以下のファイルを削除してください。
 	* `al2` ✏️フォルダ
-		* `al2_visual_font.aux2` ✏️このファイルを削除
-		* `config` ✏️フォルダ
-			* `al2_visual_font.json` ✏️このファイルを削除
+		* `al2_visual_font.aui2` ✏️このファイルを削除
+		* `al2_visual_font` ✏️このフォルダを削除
 
 ## 💡使い方
 
@@ -61,13 +45,12 @@
 
 1. aviutl2を起動していない状態で`プラグインフォルダ`内の以下のファイルを削除してください。
 	* `al2` ✏️フォルダ
-		* `config` ✏️フォルダ
-			* `al2_visual_font.json` ✏️このファイルを削除
+		* `al2_visual_font` ✏️フォルダ
+			* `config` ✏️フォルダ
+				* `al2_visual_font.json` ✏️このファイルを削除
 
-## 🔧設定
+## 🔧設定項目
 
-* `フォント視覚化MOD`ウィンドウで設定します。
----
 * `フォントメニュー`
 	* `メニューを視覚化` ✏️チェックを入れるとフォントメニューを実際のフォントを使用して描画します。
 	* `メニュー項目のサイズ` ✏️メニュー項目のサイズをpx単位で指定します。
@@ -94,28 +77,11 @@
 
 ## 🔖更新履歴
 
+* 🔖r3 #2026年01月31日
+	* 🚚フォルダ構造を変更
+
 * 🔖r2 #2026年01月27日
 	* ⚡️プラグイン名にもaviutl2の翻訳機能を使用するように変更
 
 * 🔖r1 #2026年01月25日
 	* 🎉初版
-
-## ⚗️動作確認
-
-* AviUtl ExEdit2 beta30 https://spring-fragrance.mints.ne.jp/aviutl/
-
-## 💳クレジット
-
-* AviUtl ExEdit2 Plugin SDK https://spring-fragrance.mints.ne.jp/aviutl/
-* Microsoft Research Detours Package https://github.com/microsoft/Detours
-* JSON for Modern C++ https://github.com/nlohmann/json
-
-## 👽️作成者情報
- 
-* 作成者 - 蛇色 (へびいろ)
-* GitHub - https://github.com/hebiiro
-* X - https://x.com/io_hebiiro
-
-## 🚨免責事項
-
-この作成物および同梱物を使用したことによって生じたすべての障害・損害・不具合等に関しては、私と私の関係者および私の所属するいかなる団体・組織とも、一切の責任を負いません。各自の責任においてご使用ください。

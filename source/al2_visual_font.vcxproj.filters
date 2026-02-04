@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="framework">
+      <UniqueIdentifier>{5ec3038b-4b6b-424e-b111-e3d5dee441a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="hook">
+      <UniqueIdentifier>{dc7cab57-7530-406c-82d1-89fe6699c5b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hook\entry">
+      <UniqueIdentifier>{d86cb696-5657-41eb-8cec-fa8a2833aeca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="instant_window">
+      <UniqueIdentifier>{b225e8ae-8c3a-418c-b128-647c671f5b88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="instant_window\entity">
+      <UniqueIdentifier>{f9f65a17-bf96-42b0-a56c-b27b7589ebc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="root">
+      <UniqueIdentifier>{0473cc56-fbe5-46be-9ca4-cde18b42ec29}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="app.hpp" />
+    <ClInclude Include="app_interface.hpp" />
+    <ClInclude Include="available_fonts.hpp" />
+    <ClInclude Include="config_dialog.hpp" />
+    <ClInclude Include="config_io.hpp" />
+    <ClInclude Include="hive.hpp" />
+    <ClInclude Include="utils.hpp" />
+    <ClInclude Include="resource.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="version.hpp">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="hook\entry.hpp">
+      <Filter>hook</Filter>
+    </ClInclude>
+    <ClInclude Include="hook\manager.hpp">
+      <Filter>hook</Filter>
+    </ClInclude>
+    <ClInclude Include="hook\entry\call_wnd_proc_ret.hpp">
+      <Filter>hook\entry</Filter>
+    </ClInclude>
+    <ClInclude Include="hook\entry\menu_api.hpp">
+      <Filter>hook\entry</Filter>
+    </ClInclude>
+    <ClInclude Include="instant_window\manager.hpp">
+      <Filter>instant_window</Filter>
+    </ClInclude>
+    <ClInclude Include="instant_window\entity\font_listbox.hpp">
+      <Filter>instant_window\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="instant_window\entity\font_menu_dialog.hpp">
+      <Filter>instant_window\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="hook\entry\gdi_api.hpp">
+      <Filter>hook\entry</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="main.def">
+      <Filter>framework</Filter>
+    </None>
+    <None Include="..\CONTRIBUTING.md">
+      <Filter>root</Filter>
+    </None>
+    <None Include="..\CREDITS.md">
+      <Filter>root</Filter>
+    </None>
+    <None Include="..\README.md">
+      <Filter>root</Filter>
+    </None>
+    <None Include="..\.gitattributes">
+      <Filter>root</Filter>
+    </None>
+    <None Include="..\.gitignore">
+      <Filter>root</Filter>
+    </None>
+    <None Include="..\LICENSE">
+      <Filter>root</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\package.txt">
+      <Filter>root</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
