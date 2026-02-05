@@ -1,5 +1,5 @@
 ﻿**下記URLにあるREADME(使い方など)をよく読みながら使用してください。**
 🐍AviUtl2プラグイン総合
 https://github.com/hebiiro/al2
-🐍AviUtl2 フォント視覚化MOD 🔖r2 #2026年02月04日
-https://github.com/hebiiro/al2_visual_font/tree/release/2
+🐍AviUtl2 フォント視覚化MOD 🔖r3 #2026年02月05日
+https://github.com/hebiiro/al2_visual_font/tree/release/3
