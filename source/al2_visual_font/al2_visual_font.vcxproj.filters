@@ -1,13 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="framework">
-      <UniqueIdentifier>{5ec3038b-4b6b-424e-b111-e3d5dee441a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="hook">
       <UniqueIdentifier>{dc7cab57-7530-406c-82d1-89fe6699c5b4}</UniqueIdentifier>
     </Filter>
@@ -20,13 +13,29 @@
     <Filter Include="instant_window\entity">
       <UniqueIdentifier>{f9f65a17-bf96-42b0-a56c-b27b7589ebc8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="root">
-      <UniqueIdentifier>{0473cc56-fbe5-46be-9ca4-cde18b42ec29}</UniqueIdentifier>
+    <Filter Include="_">
+      <UniqueIdentifier>{5ec3038b-4b6b-424e-b111-e3d5dee441a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_\resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="_\root">
+      <UniqueIdentifier>{1f35a9a4-3bd1-406c-a02e-eaa417afdcce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_\root\au2pkg">
+      <UniqueIdentifier>{1e672caf-3ed1-4b66-a9ff-dd2cbb071df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_\root\au2pkg\Language">
+      <UniqueIdentifier>{cb431572-ffee-4e3f-989e-ee5f71a348e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_\root\au2pkg\Language\Template">
+      <UniqueIdentifier>{3cd21b6f-cbf4-4f2e-9c5c-fcfb833650e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
-      <Filter>framework</Filter>
+      <Filter>_</Filter>
     </ClInclude>
     <ClInclude Include="app.hpp" />
     <ClInclude Include="app_interface.hpp" />
@@ -36,10 +45,10 @@
     <ClInclude Include="hive.hpp" />
     <ClInclude Include="utils.hpp" />
     <ClInclude Include="resource.h">
-      <Filter>resource</Filter>
+      <Filter>_\resource</Filter>
     </ClInclude>
     <ClInclude Include="version.hpp">
-      <Filter>framework</Filter>
+      <Filter>_</Filter>
     </ClInclude>
     <ClInclude Include="hook\entry.hpp">
       <Filter>hook</Filter>
@@ -69,43 +78,46 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
-      <Filter>framework</Filter>
+      <Filter>_</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>framework</Filter>
+      <Filter>_</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
-      <Filter>resource</Filter>
+      <Filter>_\resource</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="main.def">
-      <Filter>framework</Filter>
+      <Filter>_</Filter>
     </None>
-    <None Include="..\CONTRIBUTING.md">
-      <Filter>root</Filter>
+    <None Include="..\..\CONTRIBUTING.md">
+      <Filter>_\root</Filter>
     </None>
-    <None Include="..\CREDITS.md">
-      <Filter>root</Filter>
+    <None Include="..\..\CREDITS.md">
+      <Filter>_\root</Filter>
     </None>
-    <None Include="..\README.md">
-      <Filter>root</Filter>
+    <None Include="..\..\README.md">
+      <Filter>_\root</Filter>
     </None>
-    <None Include="..\.gitattributes">
-      <Filter>root</Filter>
+    <None Include="..\..\.gitattributes">
+      <Filter>_\root</Filter>
     </None>
-    <None Include="..\.gitignore">
-      <Filter>root</Filter>
+    <None Include="..\..\.gitignore">
+      <Filter>_\root</Filter>
     </None>
-    <None Include="..\LICENSE">
-      <Filter>root</Filter>
+    <None Include="..\..\LICENSE">
+      <Filter>_\root</Filter>
+    </None>
+    <None Include="..\..\au2pkg\Language\Template\al2_visual_font.aul2">
+      <Filter>_\root\au2pkg\Language\Template</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\package.txt">
-      <Filter>root</Filter>
+    <Text Include="..\..\au2pkg\package.txt">
+      <Filter>_\root\au2pkg</Filter>
     </Text>
   </ItemGroup>
 </Project>
