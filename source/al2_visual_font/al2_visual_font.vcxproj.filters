@@ -38,7 +38,6 @@
       <Filter>_</Filter>
     </ClInclude>
     <ClInclude Include="app.hpp" />
-    <ClInclude Include="app_interface.hpp" />
     <ClInclude Include="available_fonts.hpp" />
     <ClInclude Include="config_dialog.hpp" />
     <ClInclude Include="config_io.hpp" />
@@ -75,6 +74,7 @@
       <Filter>hook\entry</Filter>
     </ClInclude>
     <ClInclude Include="debug.hpp" />
+    <ClInclude Include="app_interface.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

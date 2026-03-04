@@ -5,17 +5,14 @@ namespace apn::visual_font
 	//
 	// このクラスはアプリケーションです。
 	//
-	inline struct app_t : app_interface_t
+	inline struct app_t : app_base_t
 	{
 		//
-		// dllの初期化処理を実行します。
+		// プラグインの初期化処理を実行します。
 		//
-		virtual BOOL dll_init() override
+		virtual BOOL on_initialize_plugin(DWORD version) override
 		{
 			MY_TRACE_FUNC("");
-
-			// 最初にaviutl2ウィンドウを捕捉します。
-			catch_aviutl2_window();
 
 			// 各種開始処理を実行します。
 			debug.init();
@@ -32,9 +29,9 @@ namespace apn::visual_font
 		}
 
 		//
-		// dllの後始末処理を実行します。
+		// プラグインの後始末処理を実行します。
 		//
-		virtual BOOL dll_exit() override
+		virtual BOOL on_uninitialize_plugin() override
 		{
 			MY_TRACE_FUNC("");
 
