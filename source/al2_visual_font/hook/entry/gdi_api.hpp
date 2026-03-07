@@ -14,19 +14,10 @@ namespace apn::visual_font::hook
 		{
 			MY_TRACE_FUNC("");
 
-			DetourTransactionBegin();
-			DetourUpdateThread(::GetCurrentThread());
-
-			my::hook::attach(ExtTextOutW);
-
-			// フックをコミットします。
-			auto result = (DetourTransactionCommit() == NO_ERROR);
-
-			if (!result)
+			// APIフックを開始します。
 			{
-				MY_TRACE("APIフックに失敗しました\n");
-
-				return FALSE;
+				my::hook::detours detours;
+				my::hook::attach(ExtTextOutW);
 			}
 
 			return TRUE;
@@ -38,6 +29,12 @@ namespace apn::visual_font::hook
 		virtual BOOL on_exit() override
 		{
 			MY_TRACE_FUNC("");
+
+			// APIフックを終了します。
+			{
+				my::hook::detours detours;
+				my::hook::detach(ExtTextOutW);
+			}
 
 			return TRUE;
 		}
