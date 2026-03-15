@@ -26,12 +26,6 @@
     <Filter Include="_\root\au2pkg">
       <UniqueIdentifier>{1e672caf-3ed1-4b66-a9ff-dd2cbb071df7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="_\root\au2pkg\Language">
-      <UniqueIdentifier>{cb431572-ffee-4e3f-989e-ee5f71a348e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="_\root\au2pkg\Language\Template">
-      <UniqueIdentifier>{3cd21b6f-cbf4-4f2e-9c5c-fcfb833650e0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -110,9 +104,6 @@
     </None>
     <None Include="..\..\LICENSE">
       <Filter>_\root</Filter>
-    </None>
-    <None Include="..\..\au2pkg\Language\Template\al2_visual_font.aul2">
-      <Filter>_\root\au2pkg\Language\Template</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -191,7 +191,6 @@
   <ItemGroup>
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
-    <None Include="..\..\au2pkg\Language\Template\al2_visual_font.aul2" />
     <None Include="..\..\CONTRIBUTING.md" />
     <None Include="..\..\CREDITS.md" />
     <None Include="..\..\LICENSE" />
