@@ -200,9 +200,6 @@
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\au2pkg\package.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

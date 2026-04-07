@@ -23,9 +23,6 @@
     <Filter Include="_\root">
       <UniqueIdentifier>{1f35a9a4-3bd1-406c-a02e-eaa417afdcce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="_\root\au2pkg">
-      <UniqueIdentifier>{1e672caf-3ed1-4b66-a9ff-dd2cbb071df7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -105,10 +102,5 @@
     <None Include="..\..\LICENSE">
       <Filter>_\root</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\au2pkg\package.txt">
-      <Filter>_\root\au2pkg</Filter>
-    </Text>
   </ItemGroup>
 </Project>
