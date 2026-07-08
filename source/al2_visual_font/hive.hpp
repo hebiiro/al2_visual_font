@@ -86,11 +86,6 @@ namespace apn::visual_font
 			BOOL flag_use = TRUE;
 
 			//
-			// TRUEの場合は「フォントメニューの設定」ダイアログをリサイズ可能にします。
-			//
-			BOOL flag_resize = TRUE;
-
-			//
 			// TRUEの場合はホットキーでフォント名をコピーできるようにします。
 			//
 			BOOL flag_copy = TRUE;

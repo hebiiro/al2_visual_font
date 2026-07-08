@@ -30,10 +30,9 @@
 #define idc_font_listbox_sample_text_format 10110
 #define idc_font_menu_dialog_stc        10200
 #define idc_font_menu_dialog_flag_use   10201
-#define idc_font_menu_dialog_flag_resize 10202
-#define idc_font_menu_dialog_flag_copy  10203
-#define idc_font_menu_dialog_title_stc  10204
-#define idc_font_menu_dialog_title      10205
+#define idc_font_menu_dialog_flag_copy  10202
+#define idc_font_menu_dialog_title_stc  10203
+#define idc_font_menu_dialog_title      10204
 
 // Next default values for new objects
 // 

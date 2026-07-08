@@ -39,13 +39,6 @@ namespace apn::visual_font::instant_window
 			// 『フォントメニューの設定』ダイアログではない場合はサブクラス化しません。
 			if (window_name != title) return FALSE;
 
-			// 『フォントメニューの設定』ダイアログをリサイズ可能にする場合は
-			if (hive.font_menu_dialog.flag_resize)
-			{
-				// ウィンドウスタイルを変更します。
-				my::modify_style(hwnd, 0, WS_THICKFRAME);
-			}
-
 			// ホットキーでフォント名をコピーする場合は
 			if (hive.font_menu_dialog.flag_copy)
 			{
@@ -128,42 +121,6 @@ namespace apn::visual_font::instant_window
 
 					if (nm->code == NM_CUSTOMDRAW)
 						return on_custom_draw(hwnd, message, w_param, l_param);
-
-					break;
-				}
-			case WM_SIZE:
-				{
-					// リサイズ可能ではない場合は何もしません。
-					if (!hive.font_menu_dialog.flag_resize) break;
-
-					// ダイアログのサイズに合わせてコントロールを整列します。
-
-					constexpr auto space = 12;
-
-					auto client_rc = my::get_client_rect(hwnd);
-
-					auto list = ::GetWindow(hwnd, GW_CHILD);
-					auto list_rc = my::get_window_rect(list);
-					my::map_window_points(nullptr, hwnd, &list_rc);
-
-					auto ok = ::GetWindow(list, GW_HWNDNEXT);
-					auto ok_rc = my::get_window_rect(ok);
-					my::map_window_points(nullptr, hwnd, &ok_rc);
-
-					auto base_w = my::get_width(ok_rc);
-					auto base_h = my::get_height(ok_rc);
-
-					list_rc.left = client_rc.left + space;
-					list_rc.top = client_rc.top + space;
-					list_rc.right = client_rc.right - space;
-					list_rc.bottom = client_rc.bottom - (base_h + space * 2);
-					my::set_window_rect(list, &list_rc);
-
-					ok_rc.left = client_rc.right - (base_w + space);
-					ok_rc.top = client_rc.bottom - (base_h + space);
-					ok_rc.right = ok_rc.left + base_w;
-					ok_rc.bottom = ok_rc.top + base_h;
-					my::set_window_rect(ok, &ok_rc);
 
 					break;
 				}

@@ -81,7 +81,6 @@ namespace apn::visual_font
 			MY_TRACE_FUNC("");
 
 			read_bool(root, "font_menu_dialog.flag_use", hive.font_menu_dialog.flag_use);
-			read_bool(root, "font_menu_dialog.flag_resize", hive.font_menu_dialog.flag_resize);
 			read_bool(root, "font_menu_dialog.flag_copy", hive.font_menu_dialog.flag_copy);
 			read_string(root, "font_menu_dialog.title", hive.font_menu_dialog.title);
 
@@ -96,7 +95,6 @@ namespace apn::visual_font
 			MY_TRACE_FUNC("");
 
 			write_bool(root, "font_menu_dialog.flag_use", hive.font_menu_dialog.flag_use);
-			write_bool(root, "font_menu_dialog.flag_resize", hive.font_menu_dialog.flag_resize);
 			write_bool(root, "font_menu_dialog.flag_copy", hive.font_menu_dialog.flag_copy);
 			write_string(root, "font_menu_dialog.title", hive.font_menu_dialog.title);
 

@@ -31,7 +31,6 @@ namespace apn::visual_font
 			set_text(idc_font_listbox_sample_text_format, hive.font_listbox.sample_text_format);
 
 			set_check(idc_font_menu_dialog_flag_use, hive.font_menu_dialog.flag_use);
-			set_check(idc_font_menu_dialog_flag_resize, hive.font_menu_dialog.flag_resize);
 			set_check(idc_font_menu_dialog_flag_copy, hive.font_menu_dialog.flag_copy);
 			set_text(idc_font_menu_dialog_title, hive.font_menu_dialog.title);
 
@@ -62,7 +61,6 @@ namespace apn::visual_font
 			get_text(idc_font_listbox_sample_text_format, hive.font_listbox.sample_text_format);
 
 			get_check(idc_font_menu_dialog_flag_use, hive.font_menu_dialog.flag_use);
-			get_check(idc_font_menu_dialog_flag_resize, hive.font_menu_dialog.flag_resize);
 			get_check(idc_font_menu_dialog_flag_copy, hive.font_menu_dialog.flag_copy);
 			get_text(idc_font_menu_dialog_title, hive.font_menu_dialog.title);
 
@@ -80,7 +78,6 @@ namespace apn::visual_font
 			case idc_font_menu_flag_use:
 			case idc_font_listbox_flag_use:
 			case idc_font_menu_dialog_flag_use:
-			case idc_font_menu_dialog_flag_resize:
 			case idc_font_menu_dialog_flag_copy:
 				from_ui(); break;
 
