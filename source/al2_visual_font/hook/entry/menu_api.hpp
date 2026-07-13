@@ -274,6 +274,13 @@ namespace apn::visual_font::hook
 			// メニュー項目を走査します。
 			for (decltype(c) i = 0; i < c; i++)
 			{
+				// メニュー項目がサブメニューの場合は
+				if (auto sub_menu = ::GetSubMenu(menu, i))
+				{
+					// サブメニューがフォントメニューの場合はTRUEを返します。
+					if (is_font_menu(sub_menu)) return TRUE;
+				}
+
 				// メニュー項目のテキストを取得します。
 				auto text = my::get_menu_item_text(menu, i, MF_BYPOSITION);
 
