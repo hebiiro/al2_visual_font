@@ -9,6 +9,6 @@ namespace apn::visual_font
 		//
 		// コンストラクタです。
 		//
-		version_t() : version_base_t(L"フォント視覚化MOD", L"🐍フォント視覚化MOD🔖", L"r5") {}
+		version_t() : version_base_t(L"フォント視覚化MOD", L"🐍フォント視覚化MOD🔖", L"r6") {}
 	} version;
 }
