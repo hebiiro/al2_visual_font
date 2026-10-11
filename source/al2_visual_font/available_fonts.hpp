@@ -35,15 +35,197 @@ namespace apn::visual_font
 		//
 		// 指定されたフォントが利用可能な場合はTRUEを返します。
 		//
-		BOOL contains(const std::wstring& font_name) const
+		inline BOOL contains(const std::wstring& font_name) const
 		{
 			return nodes.contains(font_name);
 		}
 
 		//
-		// システムで使用可能なフォント(の名前)を取得します。
+		// フォルダ内のフォント(の名前)を取得します。
+		//
+		BOOL get_folder_fonts(const auto& factory, const auto& builder)
+		{
+			// フォントフォルダのパスを取得します。
+			const auto path = []() -> std::filesystem::path
+			{
+				// dllファイルのパスを取得します。
+ 				auto path = my::get_module_file_name(hive.instance);
+
+				while (1)
+				{
+					// 親フォルダを取得します。
+					auto parent = path.parent_path();
+
+					// 親フォルダが無効の場合はループを終了します。
+					if (parent.empty() || parent == path) break;
+
+					// パスがプラグインフォルダの場合は
+					if (::lstrcmpiW(path.filename().c_str(), L"Plugin") == 0)
+						return parent / L"Font"; // フォントフォルダを返します。
+
+					// 親フォルダに移動します。
+					path = parent;
+				}
+
+				return {};
+			}();
+
+			// フォルダ内のフォント(の名前)を取得します。
+			return get_folder_fonts(factory, builder, path);
+		}
+
+		//
+		// フォルダ内のフォント(の名前)を取得します。
+		//
+		BOOL get_folder_fonts(const auto& factory, const auto& builder, const std::filesystem::path& origin)
+		{
+			// 指定されたパスが無効の場合はFALSEを返します。
+			if (origin.empty()) return FALSE;
+
+			// 結果です。
+			auto result = FALSE;
+
+			try
+			{
+				// フォルダ内のファイルとフォルダを列挙します。
+				for (const auto& entry : std::filesystem::directory_iterator(origin))
+				{
+					// パスを取得します。
+					auto path = entry.path();
+
+					// パスがフォルダの場合は
+					if (std::filesystem::is_directory(path))
+					{
+						// フォルダを再帰的に読み込みます。
+						result |= get_folder_fonts(factory, builder, path);
+					}
+					// パスがファイルの場合は
+					else
+					{
+						// 拡張子を取得します。
+						auto extension = path.extension();
+
+						// フォントファイルの場合は
+						if (::lstrcmpiW(extension.c_str(), L".ttf") == 0 ||
+							::lstrcmpiW(extension.c_str(), L".otf") == 0 ||
+							::lstrcmpiW(extension.c_str(), L".ttc") == 0)
+						{
+							// ファイルパスからDirectWriteフォントリソースを作成します。
+							ComPtr<IDWriteFontFile> font_file;
+							auto hr = factory->CreateFontFileReference(
+								entry.path().c_str(), nullptr, font_file.GetAddressOf());
+							if (!font_file) continue;
+
+							// DirectWriteフォントリソースを追加します。
+							hr = builder->AddFontFile(font_file.Get());
+							if (FAILED(hr)) continue;
+			
+							// フォントファイルをプロセスプライベートの
+							// GDIリソースとして読み込みます。
+							if (::AddFontResourceExW(path.c_str(), FR_PRIVATE, nullptr))
+							{
+								result |= TRUE;
+							}
+						}
+					}
+				}
+			}
+			catch (...)
+			{
+			}
+
+			// 結果を返します。
+			return result;
+		}
+
+		//
+		// 使用可能なフォント(の名前)を取得します。
 		//
 		BOOL get_available_fonts()
+		{
+			// DirectWriteファクトリを取得します。
+			ComPtr<IDWriteFactory5> factory;
+			::DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED,
+				__uuidof(factory), (IUnknown**)factory.GetAddressOf());
+			if (!factory)
+			{
+				MY_TRACE("IDWriteFactoryの取得に失敗しました\n");
+
+				return FALSE;
+			}
+
+			// 結果です。
+			auto result = FALSE;
+
+			// システムで使用可能なフォント(の名前)を取得します。
+			{
+				// フォントコレクションを取得します。
+				ComPtr<IDWriteFontCollection> font_collection;
+				factory->GetSystemFontCollection(&font_collection);
+				if (!font_collection)
+				{
+					MY_TRACE("フォントコレクションの取得に失敗しました\n");
+
+					return FALSE;
+				}
+
+				// システムで使用可能なフォント(の名前)を取得します。
+				result |= get_available_fonts(font_collection);
+			}
+
+			// プロセスプライベートで使用可能なフォント(の名前)を取得します。
+			{
+				// フォントセットビルダーを取得します。
+				ComPtr<IDWriteFontSetBuilder1> builder;
+				auto hr = factory->CreateFontSetBuilder(builder.GetAddressOf());
+				if (!builder)
+				{
+					MY_TRACE("フォントビルダーの取得に失敗しました\n");
+
+					return result;
+				}
+
+				// フォントセットを構築します。
+				if (!get_folder_fonts(factory, builder))
+				{
+					MY_TRACE("フォントセットの構築に失敗しました\n");
+
+					return result;
+				}
+
+				// フォントセットを取得します。
+				ComPtr<IDWriteFontSet> font_set;
+				hr = builder->CreateFontSet(font_set.GetAddressOf());
+				if (!font_set)
+				{
+					MY_TRACE("フォントセットの取得に失敗しました\n");
+
+					return result;
+				}
+
+				// フォントコレクションを取得します。
+				ComPtr<IDWriteFontCollection1> font_collection;
+				hr = factory->CreateFontCollectionFromFontSet(
+					font_set.Get(), font_collection.GetAddressOf());
+				if (!font_collection)
+				{
+					MY_TRACE("フォントコレクションの取得に失敗しました\n");
+
+					return result;
+				}
+
+				// プロセスプライベートで使用可能なフォント(の名前)を取得します。
+				result |= get_available_fonts(font_collection);
+			}
+
+			// 結果を返します。
+			return result;
+		}
+
+		//
+		// フォントコレクションからフォント(の名前)を取得します。
+		//
+		BOOL get_available_fonts(const auto& font_collection)
 		{
 			//
 			// namesの中で最も適切なインデックスを返します。
@@ -109,27 +291,6 @@ namespace apn::visual_font
 				else
 					return {};
 			};
-
-			// DirectWriteファクトリを取得します。
-			ComPtr<IDWriteFactory> factory;
-			::DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED,
-				__uuidof(IDWriteFactory), (IUnknown**)factory.GetAddressOf());
-			if (!factory)
-			{
-				MY_TRACE("IDWriteFactoryの取得に失敗しました\n");
-
-				return FALSE;
-			}
-
-			// フォントコレクションを取得します。
-			ComPtr<IDWriteFontCollection> font_collection;
-			factory->GetSystemFontCollection(&font_collection);
-			if (!font_collection)
-			{
-				MY_TRACE("フォントコレクションの取得に失敗しました\n");
-
-				return FALSE;
-			}
 
 			// フォントファミリー数を取得します。
 			auto font_family_count = font_collection->GetFontFamilyCount();

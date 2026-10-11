@@ -13,7 +13,7 @@ namespace apn::visual_font
 		BOOL init()
 		{
 #ifdef _DEBUG
-//			if (0)
+			if (0)
 			{
 				// 指定されたキーが押されているときだけログを出力するように、
 				// カスタムロガーをセットします。
