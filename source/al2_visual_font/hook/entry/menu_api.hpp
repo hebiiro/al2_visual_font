@@ -15,12 +15,12 @@ namespace apn::visual_font::hook
 			//
 			// メニュー描画用のテーマハンドルです。
 			//
-			my::theme::unique_ptr<> theme, immersive_start_theme;
+			my::theme::unique_ptr theme, immersive_start_theme;
 
 			//
 			// メニューの背景を塗りつぶすためのブラシです。
 			//
-			my::gdi::unique_ptr<HBRUSH> background_brush;
+			my::gdi<HBRUSH>::unique_ptr background_brush;
 
 			//
 			// 最後に処理したメニューです。
@@ -171,11 +171,11 @@ namespace apn::visual_font::hook
 							auto old_bk_mode = ::SetBkMode(dc, TRANSPARENT);
 
 							// デバイスコンテキストにフォントをセットします。
-							my::gdi::unique_ptr<HFONT> font(::CreateFontW(
+							my::gdi<HFONT>::unique_ptr font(::CreateFontW(
 								hive.font_menu.font_height, 0, 0, 0, 0, FALSE, FALSE, FALSE,
 								DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
 								DEFAULT_QUALITY, DEFAULT_PITCH, text.c_str()));
-							my::gdi::selector font_selector(dc, font.get());
+							my::gdi<HFONT>::selector font_selector(dc, font.get());
 
 							// プレビュー用テキストを作成します。
 							auto preview_text = hive.font_menu.sample_text_format.empty() ?
@@ -217,7 +217,7 @@ namespace apn::visual_font::hook
 								auto rgn_rc = rc;
 								rgn_rc.left = rgn_rc.right - my::get_height(rc);
 
-								my::gdi::unique_ptr<HRGN> rgn(::CreateRectRgnIndirect(&rgn_rc));
+								my::gdi<HRGN>::unique_ptr rgn(::CreateRectRgnIndirect(&rgn_rc));
 
 								::ExtSelectClipRgn(dc, rgn.get(), RGN_DIFF);
 							}
@@ -380,7 +380,7 @@ namespace apn::visual_font::hook
 						menu_api.visualize(menu);
 /*
 						// WH_CALLWNDPROCRETフックをセットします。
-						my::win_hook::unique_ptr<> win_hook(
+						my::win_hook::unique_ptr win_hook(
 							::SetWindowsHookEx(WH_CALLWNDPROCRET,
 								[](int code, WPARAM w_param, LPARAM l_param) -> LRESULT
 						{

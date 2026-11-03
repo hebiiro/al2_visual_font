@@ -69,11 +69,11 @@ namespace apn::visual_font::hook
 					{
 						// フォントを使用して項目名を描画します。
 
-						my::gdi::unique_ptr<HFONT> font(::CreateFontW(
+						my::gdi<HFONT>::unique_ptr font(::CreateFontW(
 							hive.font_listbox.font_height, 0, 0, 0, 0, FALSE, FALSE, FALSE,
 							DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
 							DEFAULT_QUALITY, DEFAULT_PITCH, font_name.c_str()));
-						my::gdi::selector font_selector(dc, font.get());
+						my::gdi<HFONT>::selector font_selector(dc, font.get());
 
 						auto preview_text = hive.font_listbox.sample_text_format.length() ?
 							my::replace(hive.font_listbox.sample_text_format, L"%font%", font_name) : font_name;

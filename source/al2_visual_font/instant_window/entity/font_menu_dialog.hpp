@@ -17,7 +17,7 @@ namespace apn::visual_font::instant_window
 		//
 		// CDDS_ITEMPREPAINTで使用するフォントです。
 		//
-		my::gdi::unique_ptr<HFONT> font;
+		my::gdi<HFONT>::unique_ptr font;
 
 		//
 		// 初期化処理です。
